@@ -2,8 +2,12 @@
 <% search_results.get_members.each do |member| %>
   <ul class='house-members'>
       <li class='name'>Name: <%= member.name %></li>
-      <li class='role'>Role: <%= member.role %></li>
+      <% if member.role %>
+        <li class='role'>Role: <%= member.role %></li>
+      <% end %>
       <li class='house'>House: <%= member.house %></li>
-      <li class='patronus'>Patronus: <%= member.patronus %></li></ul>
+      <% if member.patronus %>
+        <li class='patronus'>Patronus: <%= member.patronus %></li></ul>
+      <% end %>
     </ul>
 <% end %>
