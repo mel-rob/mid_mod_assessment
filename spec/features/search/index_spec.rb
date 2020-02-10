@@ -10,9 +10,9 @@ RSpec.describe 'search index page' do
 
     expect(current_path).to eq(search_path)
 
-    expect(page).to have_content('21 for Gryffindor')
+    expect(page).to have_content('41 for Gryffindor')
 
-    expect(page).to have_css('.house-members', count: 21)
+    expect(page).to have_css('.house-members', count: 41)
 
     within(first('.house-members')) do
       expect(page).to have_css(".name")
