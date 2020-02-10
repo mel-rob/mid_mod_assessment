@@ -1,17 +1,12 @@
 class SearchController < ApplicationController
 
-def index
-  house = params[:house]
-
-  conn = Faraday.new(url: 'https://www.potterapi.com/v1') do |faraday|
-    faraday.params['key'] = ENV['POTTER_KEY']
-    faraday.adapter Faraday.default_adapter
+  def index
+    render locals: {
+      search_results: PotterSearch.new(search_params)
+    }
   end
 
-    response = conn.get("characters?house=#{house}")
-
-    json = JSON.parse(response.body, symbolize_names: true)
-    require "pry"; binding.pry
-
+  def search_params
+    params.permit(:house)
   end
 end
