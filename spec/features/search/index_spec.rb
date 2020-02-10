@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'search index page' do
-  it 'shows count of members in the house with info for each member' do
+  it 'shows count of members in the house with info for each member', :vcr do
     visit '/'
 
     select 'Gryffindor', :from => :house
@@ -18,7 +18,7 @@ RSpec.describe 'search index page' do
       expect(page).to have_css(".name")
       expect(page).to have_css(".role")
       expect(page).to have_css(".house")
-      expect(page).to have_css(".patronus")
+      expect(page).to_not have_css(".patronus")
     end
   end
 end
